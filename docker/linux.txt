@@ -1,0 +1,25 @@
+1. sudo yum update
+2. sudo cat <<EOF >> /etc/yum.repos.d/docker.repo
+[dockerrepo]
+name=Docker Repository
+baseurl=https://yum.dockerproject.org/repo/main/centos/7
+enabled=1
+gpgcheck=1
+gpgkey=https://yum.dockerproject.org/gpg
+EOF
+3. sudo yum install docker-engine
+4. sudo service docker start
+5. sudo chkconfig docker on
+6. sudo mkdir -p /etc/systemd/system/docker.service.d
+7. sudo cat <<EOF >> /etc/systemd/system/docker.service.d/docker.conf
+[Service]
+ExecStart=
+ExecStart=/usr/bin/dockerd -H unix:///var/run/docker.sock -H tcp://0.0.0.0:2375
+EOF
+8. sudo systemctl daemon-reload
+9. sudo service docker restart
+10. sudo cat <<EOF >> /etc/profile.d/docker.sh
+export DOCKER_HOST=tcp://127.0.0.1:2375
+EOF
+11. sudo curl -L https://github.com/docker/compose/releases/download/1.7.1/docker-compose-`uname -s`-`uname -m` > /usr/bin/docker-compose
+12. sudo chmod +x /usr/bin/docker-compose
