@@ -1,0 +1,37 @@
+$configure_docker = <<SCRIPT
+mkdir -p /etc/systemd/system/docker.service.d
+touch /etc/systemd/system/docker.service.d/docker.conf
+cat <<EOF >> /etc/systemd/system/docker.service.d/docker.conf
+[Service]
+ExecStart=
+ExecStart=/usr/bin/dockerd -H unix:///var/run/docker.sock -H tcp://0.0.0.0:2375
+EOF
+systemctl daemon-reload
+service docker restart
+SCRIPT
+ 
+Vagrant.configure("2") do |config|
+ 
+  config.vm.box = "centos/7"
+ 
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+ 
+  config.vm.provider "virtualbox" do |vb|
+     vb.gui = false
+     vb.memory = "2048"
+     vb.name = "Docker"
+  end
+ 
+  config.vm.provision "docker" do |d|
+    d.pull "centos"
+  end
+ 
+  config.vm.provision "shell", inline: $configure_docker
+ 
+  config.vm.network "forwarded_port", guest: 2375, host: 2375
+  #config.vm.network "forwarded_port", guest: 8080, host: 8080
+  #config.vm.network "forwarded_port", guest: 53, host: 53
+  #config.vm.network "forwarded_port", guest: 5432, host: 5432
+  #config.vm.network "forwarded_port", guest: 8101, host: 8101
+ 
+end

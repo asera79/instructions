@@ -1,0 +1,23 @@
+1. Install VirtualBOX (Version 5.1.6 r110634 is working) http://download.virtualbox.org/virtualbox/5.1.6/VirtualBox-5.1.6-110634-Win.exe
+
+2. Install Chocolatey https://chocolatey.org/install
+
+3. Install CygWin with following packages: openssh, postgresql-client, pv, rsync
+
+4. Install Vagrant https://releases.hashicorp.com/vagrant/1.9.1/vagrant_1.9.1.msi
+
+5. From docker directory execute:
+
+vagrant up
+That will create a virtual machine with name Docker. You can manage it with CLI (all commands should be run from docker folder or below): suspend, restart, halt, ..., or with VirtualBOX UI.
+
+6. Install docker client and docker-compose (just CLI, no engine):
+
+choco install docker
+choco install docker-compose
+7. Edit your environment settings:
+
+DOCKER_HOST=tcp://127.0.0.1:2375
+8. Test your installation:
+
+docker ps -a
