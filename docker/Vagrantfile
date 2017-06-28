@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
   end
  
   config.vm.provision "docker" do |d|
-    d.pull "centos"
+    d.pull_images "centos"
   end
  
   config.vm.provision "shell", inline: $configure_docker
