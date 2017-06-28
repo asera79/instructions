@@ -1,4 +1,5 @@
 1. Install VirtualBOX (Version 5.1.6 r110634 is working) http://download.virtualbox.org/virtualbox/5.1.6/VirtualBox-5.1.6-110634-Win.exe
+Install VBox with command VirtualBox-XXX-Win.exe -msiparams NETWORKTYPE=NDIS5
 
 2. Install Chocolatey https://chocolatey.org/install
 
