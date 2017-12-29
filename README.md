@@ -2,7 +2,7 @@
 ## Install PHP 7.1 and libs
 sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update -y
-sudo apt-get install -y php7.1 php7.1-zip php7.1-xml php7.1-mbstring
+sudo apt-get install -y php7.1 php7.1-zip php7.1-xml php7.1-mbstring php7.1-sqlite3 
 sudo a2dismod php5 && sudo a2enmod php7.1 && sudo service apache2 restart
 sudo composer self-update
 ## Update conf file
