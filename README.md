@@ -33,12 +33,10 @@ shopt -s dotglob
 mv laravel/* ./ && rm -rf laravel/
 
 ## Structure
-|
---app (Model, Controllers)
-   |
-   --Http--Controllers
---database--migrations (DB migration scripts)
---routes (web.php for routes definition)
+->app (Model)  
+->app->Http->Controllers  
+->database->migrations (DB migration scripts)  
+->routes (web.php for routes definition)  
 
 
 ## Create model, migration and controller
