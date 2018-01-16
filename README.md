@@ -31,6 +31,19 @@ composer create-project laravel/laravel ./laravel
 shopt -s dotglob
 
 mv laravel/* ./ && rm -rf laravel/
+
+## Structure
+|
+--app (Model, Controllers)
+   |
+   --Http--Controllers
+--database--migrations (DB migration scripts)
+--routes (web.php for routes definition)
+
+
+## Create model, migration and controller
+php artisan make:model Post -mc
+
 ## Links
 https://community.c9.io/t/getting-started-with-laravel/1608
 
